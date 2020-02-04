@@ -8,6 +8,8 @@ class Agencies extends Model
 {
     protected $table = 'internship_agencies';
     
-    protected $fillable = ['name', 'address'];
+    protected $fillable = [ 'id',
+                            'name', 
+                            'address'];
 
 }

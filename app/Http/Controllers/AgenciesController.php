@@ -53,4 +53,23 @@ class AgenciesController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        $agencies = Agencies::findOrFail($id);
+        try {
+            if($agencies->delete())
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Data dihapus'
+                ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage(),
+            ], 400);
+        }
+    }
+
+    
+
 }

@@ -43,5 +43,25 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $user = (new User)->where('email', $username)->orWhere('username', $username)->first();
     }
 
+
+
+    public function staff()
+    {
+        return $this->hasOne('App\Models\Staff','id');
+    }
+
+    public function students()
+    {
+        return $this->hasOne('App\Models\Students','id');
+    }
+
+    public function lectures()
+    {
+        return $this->hasOne('App\Models\Lectures','id');
+    }
+
+
+
+
     
 }

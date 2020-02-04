@@ -16,6 +16,8 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
   $router->get('internship_agencies','AgenciesController@getList');
   $router->post('internship_agencies','AgenciesController@store');
   $router->post('internship_agencies/{id}', 'AgenciesController@update');
+  $router->delete('internship_agencies/{id}', 'AgenciesController@delete');
+
 
       // proposal
   $router->get('proposal','ProposalController@getList');
@@ -34,6 +36,10 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
 
       // internship
   $router->get('internship','InternshipController@getList');
+
+  //proposal
+  $router->get('proposal','ProposalsController@getList');
+
   
   
 });

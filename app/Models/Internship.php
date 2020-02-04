@@ -10,6 +10,35 @@ class Internship extends Model
 
     protected $fillable = ['id', 
                            'proposal_id',
-                           'student_id', 
+                           'student_id',
+                           'status',
+                           'advisor_id',
+                           'start_at',
+                           'end_at',
+                           'report_title',
+                           'seminar_date',
+                           'seminar_time',
+                           'seminar_room',
+                           'seminar_deadline',
+                           'internship_score',
+                           'activity_report',
+                           'news_event',
+                           'work_report',
+                           'certifivate',
                         ];
+
+    public function students()
+    {
+        return $this->belongsTo('App\Models\Students', 'id');
+    }
+
+    public function proposals()
+    {
+        return $this->belongsTo('App\Models\Proposals','id');
+    }
+
+    public function logbooks(){
+        return $this->hasMany('App\Models\Logbooks','id');
+    }
+
 }
