@@ -18,13 +18,13 @@ class CreateStaffTable extends Migration
             $table->string('nik');
             $table->string('name');
             $table->string('karpeg');
-            $table->string('npwp');
-            $table->integer('gender');
-            $table->date('birthdate');
-            $table->string('bithplace');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('marital_status');
+            $table->string('npwp')->nullable();
+            $table->integer('gender')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('bithplace')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('marital_status')->nullable();
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');

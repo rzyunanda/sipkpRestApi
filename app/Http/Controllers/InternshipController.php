@@ -29,34 +29,7 @@ class InternshipController extends Controller
 
     public function store(Request $request){
         
-        $proposal = new Proposals();
-        $proposal->title = $request->title;
-        $proposal->background = $request->background;
-        $proposal->problem = $request->problem;
-        $proposal->start_at = $request->start_at;
-        $proposal->end_at = $request->end_at;
-        $proposal->agencies_id = $request->agencies_id;
-        $proposal->status ="Diajukan";
-        $proposal->response_letter = $request->respornse_letter;
-        $proposal->note = $request->note;
-
-        if ($proposal->save()) {
-            $internship = new Internship();
-            $internship->proposal_id = $proposal->id;
-            $internship->status = $request->status;
-            $internship->advisor_id = $request->advisor_id;
-            $internship->start_at = $request->start_at;
-            $internship->end_at = $request->end_at;
-            $internship->proposal = $proposal->title;
-   
-            if($internship->save()){
-            return response()->json([
-                'success' => true,
-                'message' => 'Data berhasil ditambahkan',
-                'data' => $internship
-            ], 201);
-        }
-        }
+       
 
     }   
     

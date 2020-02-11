@@ -20,13 +20,19 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
 
 
       // proposal
-  $router->get('proposal','ProposalController@getList');
+  $router->get('proposals','ProposalsController@getList');
+  $router->post('proposals','ProposalsController@store');
+  $router->get('proposals/{id}','ProposalsController@detail');
+
+
 
 
       // User
   $router->get('users/mahasiswa','UsersController@getMhs');
   $router->get('users/lecture','UsersController@getLecture');
   $router->get('users/staff','UsersController@getStaff');
+  
+
   
   
 
@@ -36,11 +42,7 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
 
       // internship
   $router->get('internship','InternshipController@getList');
-
-  //proposal
-  $router->get('proposal','ProposalsController@getList');
-
   
-  
+
 });
 

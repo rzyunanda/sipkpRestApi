@@ -18,16 +18,16 @@ class CreateLecturesTable extends Migration
             $table->string('name');
             $table->string('nik');
             $table->string('nip');
-            $table->string('nidn');
-            $table->string('karpeg');
-            $table->string('npwp');
-            $table->integer('gender');
-            $table->date('birthday');
-            $table->string('birthplace');
-            $table->string('phone');
-            $table->text('address');
-            $table->integer('marital_status');
-            $table->integer('religion');
+            $table->string('nidn')->nullable();
+            $table->string('karpeg')->nullable();
+            $table->string('npwp')->nullable();
+            $table->integer('gender')->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('birthplace')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->integer('marital_status')->nullable();
+            $table->integer('religion')->nullable();
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');

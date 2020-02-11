@@ -15,12 +15,13 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->Increments('id');
+            $table->string('name');
             $table->string('nim');
             $table->integer('year');
-            $table->string('birthplace');
-            $table->string('birth_date');
-            $table->string('address');
-            $table->integer('marital_status');
+            $table->string('birthplace')->nullable();
+            $table->string('birth_date')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('marital_status')->nullable();
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');

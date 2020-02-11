@@ -18,4 +18,5 @@ class Logbooks extends Model
     {
         return $this->belongsTo('App\Models\Internship','id');
     }  
+
 }

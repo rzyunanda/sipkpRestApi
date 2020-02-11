@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proposals extends Model
 {
+   
+
     protected $table = 'proposals';
     
     protected $fillable = [ 'id', 
@@ -18,6 +20,15 @@ class Proposals extends Model
                             'response_letter',
                             'note'
                         ];
+    
+    protected $enumStatus = [
+        'diajukan' => 'diajukan',
+        'revisi' => 'revisi',
+        'diperbaiki' => 'diperbaiki',
+        'ditolak' => 'ditolak',
+        'diterima' => 'diterima'
+    ];
+
 
     public function internship()
     {
@@ -28,9 +39,5 @@ class Proposals extends Model
     {
         return $this->hasMany('App\Models\Students', 'id');
     }
-
-    
-
-
 
 }

@@ -7,5 +7,5 @@ use App\Models\Logbooks;
 
 class LogbooksController extends Controller
 {
-    
+  
 }

@@ -27,6 +27,14 @@ class Internship extends Model
                            'certifivate',
                         ];
 
+    protected $enumStatus = [
+        'diajukan' => 'diajukan',
+        'revisi' => 'revisi',
+        'diperbaiki' => 'diperbaiki',
+        'ditolak' => 'ditolak',
+        'diterima' => 'diterima'
+    ];
+
     public function students()
     {
         return $this->belongsTo('App\Models\Students', 'id');

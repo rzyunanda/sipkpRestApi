@@ -64,12 +64,25 @@ $app->configure('auth');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
+$app->singleton(
+    Illuminate\Contracts\Debug\ExceptionHandler::class,
+    App\Exceptions\Handler::class
+);
+
+$app->singleton(
+    Illuminate\Contracts\Console\Kernel::class,
+    App\Console\Kernel::class
+);
+
+$app->middleware([
+    'Nord\Lumen\Cors\CorsMiddleware',
+]);
+
+
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
     'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
-        
-    ]);
-
+]);
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -83,12 +96,12 @@ $app->routeMiddleware([
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
-$app->register(App\Providers\EventServiceProvider::class);
-$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+//$app->register(App\Providers\EventServiceProvider::class);
 
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
-\Dusterio\LumenPassport\LumenPassport::routes($app);
+$app->register(Nord\Lumen\Cors\CorsServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

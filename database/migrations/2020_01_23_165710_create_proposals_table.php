@@ -18,11 +18,12 @@ class CreateProposalsTable extends Migration
             $table->string('title');
             $table->string('background');
             $table->string('problem');
-            $table->date('date');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->unsignedInteger('agencies_id');
-            $table->integer('status');
-            $table->string('response_letter');
-            $table->string('note');
+            $table->integer('status')->nullable();
+            $table->string('response_letter')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
 
             $table->foreign('agencies_id')->references('id')->on('internship_agencies');
