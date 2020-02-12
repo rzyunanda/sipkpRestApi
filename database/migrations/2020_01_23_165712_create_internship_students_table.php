@@ -19,6 +19,7 @@ class CreateInternshipStudentsTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('status')->nullable();
             $table->integer('advisor_id')->unsigned();
+            $table->string('grade')->nullable();
             $table->date('start_at');
             $table->date('end_at');
             $table->text('report_title')->nullable();

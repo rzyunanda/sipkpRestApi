@@ -22,7 +22,13 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
       // proposal
   $router->get('proposals','ProposalsController@getList');
   $router->post('proposals','ProposalsController@store');
+  $router->post('proposals/{id}','ProposalsController@update');
   $router->get('proposals/{id}','ProposalsController@detail');
+  $router->post('proposals/{id}/note','ProposalsController@addNote');
+  $router->post('proposals/{id}/addfriend','ProposalsController@addTeam');
+  $router->post('proposals/{id}/accept','ProposalsController@accept');
+  $router->post('proposals/{id}/decline','ProposalsController@decline');
+  $router->delete('proposals/{id}', 'ProposalsController@delete');
 
 
 
