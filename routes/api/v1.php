@@ -30,25 +30,29 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
   $router->post('proposals/{id}/decline','ProposalsController@decline');
   $router->delete('proposals/{id}', 'ProposalsController@delete');
 
+    
+  // internship
+  $router->get('internship','InternshipController@getList');
+  $router->post('internship/{id}/addNilai','InternshipController@addGrade'); //tambah nilai
+  $router->get('internship/{id}/addNilai','InternshipController@grade');
+  $router->post('internship/{id}/advisors','InternshipController@advisors'); //tambah pembimbing
 
+  
+  
 
-
-      // User
+  // User
   $router->get('users/mahasiswa','UsersController@getMhs');
   $router->get('users/lecture','UsersController@getLecture');
   $router->get('users/staff','UsersController@getStaff');
   
-
-  
-  
-
-      // agencies
+ 
+  // agencies
   $router->get('agencies','AgenciesController@getList');
 
 
-      // internship
-  $router->get('internship','InternshipController@getList');
   
+  
+
 
 });
 

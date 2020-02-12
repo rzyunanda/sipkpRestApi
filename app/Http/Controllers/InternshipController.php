@@ -18,56 +18,53 @@ class InternshipController extends Controller
         ], 200);
     } 
 
-    public function create(){
-        $agencies = Agencies::all();
+    public function addGrade(Request $request, $id){
+        $internship = Internship::findOrFail($id);
+
+        $internship->grade = $request->grade;
+        
+        try {
+            if($internship->save())
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Menambah Nilai',
+                'data' => $internship
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage(),
+            ], 400);
+        }
+    }
+
+    public function grade($id){
+        $internship = Internship::findOrFail($id);
 
         return response()->json([
             'success' => true,
-            'data' => $agencies
+            'message' => 'Berhasil',
+            'data' => $internship
         ], 200);
     }
 
-    public function store(Request $request){
-        
-       
+    public function advisors(Request $request, $id){
+        $internship = Internship::findOrFail($id);
 
-    }   
+        $internship->advisor_id = $request->advisor_id;
+        try {
+            if($internship->save())
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Menambah Pembimbing',
+                'data' => $internship
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage(),
+            ], 400);
+        }
+    }
     
-    public function update(Request $request, $id){
-        $agencies = Agencies::findOrFail($id);
-        $agencies->name = $request->name;
-        $agencies->address = $request->address;
-
-        try {
-            if($agencies->save())
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data berhasil diubah',
-                    'data' => $agencies
-                ], 201);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'success' => false,
-                'message' => $th->getMessage(),
-                'data' => ''
-            ], 400);
-        }
-    }
-
-    public function delete($id)
-    {
-        $agencies = Agencies::findOrFail($id);
-        try {
-            if($agencies->delete())
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data dihapus'
-                ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'success' => false,
-                'message' => $th->getMessage(),
-            ], 400);
-        }
-    }
 }
