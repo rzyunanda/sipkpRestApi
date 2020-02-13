@@ -18,7 +18,7 @@ class CreateLogbooksTable extends Migration
             $table->integer('internship_id');
             $table->date('date');
             $table->string('activities');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

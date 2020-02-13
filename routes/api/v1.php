@@ -30,6 +30,8 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
   $router->post('proposals/{id}/decline','ProposalsController@decline');
   $router->delete('proposals/{id}', 'ProposalsController@delete');
 
+  
+
     
   // internship
   $router->get('internship','InternshipController@getList');
@@ -37,7 +39,18 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
   $router->get('internship/{id}/addNilai','InternshipController@grade');
   $router->post('internship/{id}/advisors','InternshipController@advisors'); //tambah pembimbing
 
-  
+  //logbooks
+  $router->group(['prefix' => 'internship/{internship_id}'], function () use (&$router) {
+    $router->get('logbooks','InternshipController@logbookList');
+    $router->post('logbooks','InternshipController@logbookStore');
+    $router->post('logbooks/{id}/updates','InternshipController@logbookUpdate');
+    $router->delete('logbooks/{id}','InternshipController@logbookDelete');
+
+      $router->group(['prefix' => 'logbooks/{logbook_id}'], function () use (&$router) {
+        $router->post('note','InternshipController@logbookNote');
+      });
+
+  });
   
 
   // User
@@ -48,10 +61,6 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
  
   // agencies
   $router->get('agencies','AgenciesController@getList');
-
-
-  
-  
 
 
 });
